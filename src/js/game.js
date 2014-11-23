@@ -51,19 +51,28 @@
       this.input.onDown.add(this.onInputDown, this);
 
       this.game.camera.follow(this.player)
+
+      // Smoke
+      this.smokeEmitter = this.game.add.emitter(0, 0, 100)
+      this.smokeEmitter.makeParticles('smoke')
+      this.smokeEmitter.start(false, 4000, 20)
     },
 
     update: function () {
       this.game.physics.arcade.collide(this.player, this.ground)
+      this.smokeEmitter.x = this.player.x
+      this.smokeEmitter.y = this.player.y
       // Constrain velocity
       // this.player.body.velocity.y = Math.sin(this.player.rotation) * this.player.body.speed
       // this.player.body.velocity.x = Math.cos(this.player.rotation) * this.player.body.speed
 
       if (this.input.activePointer.isDown) {
+        this.smokeEmitter.on = true
         this.player.body.angularVelocity = -this.ROTATION_SPEED
         this.player.body.acceleration.x = Math.cos(this.player.rotation - this.BOOST_VECTOR) * this.ACCELERATION;
         this.player.body.acceleration.y = Math.sin(this.player.rotation - this.BOOST_VECTOR) * this.ACCELERATION;
       } else {
+        this.smokeEmitter.on = false
         this.player.body.acceleration.set(0)
         this.player.body.angularVelocity = Math.cos(this.player.rotation + 0.5) * 100
       }

@@ -16,6 +16,7 @@
       this.load.setPreloadSprite(this.asset);
       this.load.image('player', 'assets/player.png');
       this.load.image('bg', 'assets/clouds.png');
+      this.load.image('smoke', 'assets/smoke.png');
       this.load.bitmapFont('minecraftia', 'assets/minecraftia.png', 'assets/minecraftia.xml');
     },
 
