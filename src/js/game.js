@@ -8,6 +8,7 @@
   Game.prototype = {
 
     create: function () {
+      this.plane = new window['duster'].Plane(this.game, 100, 100)
 
       this.ROTATION_SPEED = 110; // degrees/second
       this.ROTATION_ACCELERATION = 110; // degrees/second
